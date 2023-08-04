@@ -9,9 +9,12 @@ import fi.thl.termed.util.query.Query;
 import fi.thl.termed.util.query.Select;
 import fi.thl.termed.util.query.Specification;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -121,9 +124,9 @@ public class ProfilingService<K extends Serializable, V extends Identifiable<K>>
 
   private void logDuration(long durationInMillis, String msgFormat, Object[] args) {
     if (durationInMillis >= limitInMillis) {
-      log.debug("{} in {}", String.format(msgFormat, args), prettyPrintMillis(durationInMillis));
+      log.debug("{} in {}", String.format(msgFormat, Arrays.stream(args).map(o -> StringUtils.normalizeSpace(o.toString())).toArray(Object[]::new)), prettyPrintMillis(durationInMillis));
     } else if (log.isTraceEnabled()) {
-      log.trace("{} in {}", String.format(msgFormat, args), prettyPrintMillis(durationInMillis));
+      log.trace("{} in {}", String.format(msgFormat, Arrays.stream(args).map(o -> StringUtils.normalizeSpace(o.toString())).toArray(Object[]::new)), prettyPrintMillis(durationInMillis));
     }
   }
 

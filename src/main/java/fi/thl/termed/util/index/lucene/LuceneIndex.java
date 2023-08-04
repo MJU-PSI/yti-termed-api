@@ -33,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -228,7 +230,7 @@ public class LuceneIndex<K extends Serializable, V> implements Index<K, V> {
             .onClose(() -> tryRelease(searcher))
             .onClose(() -> {
               if (log.isTraceEnabled()) {
-                log.trace("{} in {} ms", query, System.currentTimeMillis() - start);
+                log.trace("{} in {} ms", StringUtils.normalizeSpace(query.toString()), System.currentTimeMillis() - start);
               }
             }),
         scheduledExecutorService, 1, TimeUnit.HOURS, query::toString);

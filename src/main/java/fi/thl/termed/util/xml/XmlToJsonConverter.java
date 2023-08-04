@@ -6,6 +6,8 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,6 +16,8 @@ import org.w3c.dom.NodeList;
 import java.util.function.Function;
 
 public class XmlToJsonConverter implements Function<Document, JsonElement> {
+
+  private Logger log = LoggerFactory.getLogger(getClass());
 
   @Override
   public JsonElement apply(Document doc) {
@@ -93,6 +97,7 @@ public class XmlToJsonConverter implements Function<Document, JsonElement> {
     try {
       return new JsonPrimitive(Integer.parseInt(element.getTextContent()));
     } catch (NumberFormatException e) {
+      log.debug("Exception parsing int: " + e.getMessage());
       return new JsonPrimitive(Double.parseDouble(element.getTextContent()));
     }
   }

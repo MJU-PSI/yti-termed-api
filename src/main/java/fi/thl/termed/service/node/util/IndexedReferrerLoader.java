@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,15 +124,11 @@ public class IndexedReferrerLoader implements BiFunction<Node, String, Immutable
   }
 
   private void logMissingReferrerValue(NodeId nodeId, String attributeId, NodeId referrerId) {
-    log.warn(
-        "Index may be corrupted or outdated. Node {} is missing referrers.{}.{} from the index.",
-        nodeId, attributeId, referrerId);
+    log.warn("Index may be corrupted or outdated. Node {} is missing referrers.{}.{} from the index.", nodeId, StringUtils.normalizeSpace(attributeId), referrerId);
   }
 
   private void logUnexpectedReferrerValue(NodeId nodeId, String attributeId, NodeId referrerId) {
-    log.warn(
-        "Index may be corrupted or outdated. Node {} has unexpected referrers.{}.{} in the index.",
-        nodeId, attributeId, referrerId);
+    log.warn("Index may be corrupted or outdated. Node {} has unexpected referrers.{}.{} in the index.", nodeId, StringUtils.normalizeSpace(attributeId), referrerId);
   }
 
 }

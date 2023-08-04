@@ -41,6 +41,8 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.system.StreamRDFWriter;
 import org.apache.jena.update.UpdateAction;
 import org.apache.jena.update.UpdateFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -57,6 +59,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/graphs/{graphId}/nodes/sparql")
 public class NodeSparqlReadController {
+
+  private Logger log = LoggerFactory.getLogger(getClass());
 
   @Autowired
   private Service<GraphId, Graph> graphService;
@@ -101,6 +105,7 @@ public class NodeSparqlReadController {
       ResultSetFormatter.out(out, results);
       return new ResponseEntity<>(out.toString(UTF_8.name()), HttpStatus.OK);
     } catch (QueryCancelledException e) {
+      log.error("Query timeout occured", e);
       return new ResponseEntity<>(HttpStatus.REQUEST_TIMEOUT);
     }
   }
@@ -124,6 +129,7 @@ public class NodeSparqlReadController {
       ResultSetFormatter.outputAsCSV(out, results);
       return new ResponseEntity<>(out.toString(UTF_8.name()), HttpStatus.OK);
     } catch (QueryCancelledException e) {
+      log.error("Query timeout occured", e);
       return new ResponseEntity<>(HttpStatus.REQUEST_TIMEOUT);
     }
   }

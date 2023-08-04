@@ -28,6 +28,8 @@ import fi.thl.termed.util.spring.exception.NotFoundException;
 import fi.thl.termed.util.spring.transaction.TransactionUtils;
 import java.util.UUID;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +78,7 @@ public class TypeAdminController {
       return;
     }
 
-    log.warn("Changing text attribute id from {} to {} (user: {})",
-        attributeId, newAttributeId, user.getUsername());
+    log.warn("Changing text attribute id from {} to {} (user: {})", StringUtils.normalizeSpace(attributeId), StringUtils.normalizeSpace(newAttributeId), user.getUsername());
 
     TransactionUtils.runInTransaction(transactionManager, () -> {
       Type type = typeService.get(TypeId.of(typeId, graphId), user)
@@ -165,8 +166,7 @@ public class TypeAdminController {
       return;
     }
 
-    log.warn("Changing reference attribute id from {} to {} (user: {})",
-        attributeId, newAttributeId, user.getUsername());
+    log.warn("Changing reference attribute id from {} to {} (user: {})", StringUtils.normalizeSpace(attributeId), StringUtils.normalizeSpace(newAttributeId), user.getUsername());
 
     TransactionUtils.runInTransaction(transactionManager, () -> {
       Type type = typeService.get(TypeId.of(typeId, graphId), user)

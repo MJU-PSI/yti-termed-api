@@ -58,7 +58,9 @@ public class DumpWriteFromRemoteController {
       @AuthenticationPrincipal User user) throws IOException {
 
     if (user.getAppRole() == AppRole.ADMIN || user.getAppRole() == AppRole.SUPERUSER) {
-      HttpGet request = new HttpGet(remote.getUrl());
+      throw new RuntimeException("Action disabled because of CVE");
+
+      /*HttpGet request = new HttpGet(remote.getUrl());
       request.addHeader(ACCEPT, APPLICATION_JSON_UTF8_VALUE);
       request.addHeader(AUTHORIZATION, basicAuth(remote.getUsername(), remote.getPassword()));
 
@@ -73,7 +75,7 @@ public class DumpWriteFromRemoteController {
         dumpService.save(dump, saveMode(mode), opts(sync, generateCodes, generateUris), user);
       }
 
-      log.info("Done");
+      log.info("Done");*/
     } else {
       throw new AccessDeniedException("");
     }

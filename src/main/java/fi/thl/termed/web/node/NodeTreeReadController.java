@@ -49,6 +49,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.Max;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,7 +74,7 @@ public class NodeTreeReadController {
       @RequestParam(value = "select", defaultValue = EMPTY_LIST) List<String> select,
       @RequestParam(value = "where", defaultValue = EMPTY_LIST) List<String> where,
       @RequestParam(value = "sort", defaultValue = EMPTY_LIST) List<String> sort,
-      @RequestParam(value = "max", defaultValue = "50") Integer max,
+      @RequestParam(value = "max", defaultValue = "50") @Max(10000) Integer max,
       @RequestParam(value = "pretty", defaultValue = "false") boolean pretty,
       @RequestParam(value = "htmlSafe", defaultValue = "true") boolean htmlSafe,
       @AuthenticationPrincipal User user,
@@ -100,7 +102,7 @@ public class NodeTreeReadController {
       @RequestParam(value = "select", defaultValue = EMPTY_LIST) List<String> select,
       @RequestParam(value = "where", defaultValue = EMPTY_LIST) List<String> where,
       @RequestParam(value = "sort", defaultValue = EMPTY_LIST) List<String> sort,
-      @RequestParam(value = "max", defaultValue = "50") Integer max,
+      @RequestParam(value = "max", defaultValue = "50") @Max(10000) Integer max,
       @RequestParam(value = "pretty", defaultValue = "false") boolean pretty,
       @RequestParam(value = "htmlSafe", defaultValue = "true") boolean htmlSafe,
       @AuthenticationPrincipal User user,
@@ -135,7 +137,7 @@ public class NodeTreeReadController {
       @RequestParam(value = "select", defaultValue = EMPTY_LIST) List<String> select,
       @RequestParam(value = "where", defaultValue = EMPTY_LIST) List<String> where,
       @RequestParam(value = "sort", defaultValue = EMPTY_LIST) List<String> sort,
-      @RequestParam(value = "max", defaultValue = "50") Integer max,
+      @RequestParam(value = "max", defaultValue = "50") @Max(10000) Integer max,
       @RequestParam(value = "pretty", defaultValue = "false") boolean pretty,
       @RequestParam(value = "htmlSafe", defaultValue = "true") boolean htmlSafe,
       @AuthenticationPrincipal User user,

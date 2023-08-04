@@ -4,6 +4,8 @@ import fi.thl.termed.domain.User;
 import fi.thl.termed.util.collect.Identifiable;
 import java.io.Serializable;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +62,7 @@ public class WriteLoggingService<K extends Serializable, V extends Identifiable<
   @Override
   public void delete(K key, WriteOptions opts, User user) {
     if (log.isInfoEnabled()) {
-      log.info("Deleting {} (user: {})", key, user.getUsername());
+      log.info("Deleting {} (user: {})", StringUtils.normalizeSpace(key.toString()), user.getUsername());
     }
 
     super.delete(key, opts, user);

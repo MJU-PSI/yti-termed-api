@@ -119,10 +119,6 @@ public class NodeGraphQLReadController {
         .additionalTypes(ImmutableSet.copyOf(graphQLTypesByName.values()))
         .build();
 
-    if (log.isTraceEnabled()) {
-      log.trace("GraphQLSchema: {}", new SchemaPrinter().print(graphQLSchema));
-    }
-
     ExecutionResult result = GraphQL.newGraphQL(graphQLSchema).build().execute(graphQLQueryString);
 
     if (!result.getErrors().isEmpty()) {
