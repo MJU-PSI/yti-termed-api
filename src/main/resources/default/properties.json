@@ -11,6 +11,10 @@
         {
           "lang": "en",
           "value": "label"
+        },
+        {
+          "lang": "sl",
+          "value": "ime"
         }
       ]
     }
@@ -27,6 +31,10 @@
         {
           "lang": "en",
           "value": "note"
+        },
+        {
+          "lang": "sl",
+          "value": "opomba"
         }
       ]
     }
@@ -43,6 +51,10 @@
         {
           "lang": "en",
           "value": "description"
+        },
+        {
+          "lang": "sl",
+          "value": "opis"
         }
       ]
     }
@@ -59,6 +71,10 @@
         {
           "lang": "en",
           "value": "creator"
+        },
+        {
+          "lang": "sl",
+          "value": "avtor"
         }
       ]
     }
@@ -75,6 +91,10 @@
         {
           "lang": "en",
           "value": "language"
+        },
+        {
+          "lang": "sl",
+          "value": "jezik"
         }
       ]
     }
@@ -91,6 +111,10 @@
         {
           "lang": "en",
           "value": "type"
+        },
+        {
+          "lang": "sl",
+          "value": "tip"
         }
       ]
     }
@@ -103,6 +127,10 @@
         {
           "lang": "en",
           "value": "min cardinality"
+        },
+        {
+          "lang": "sl",
+          "value": "najmanjša kardinalnost/številčnost"
         }
       ]
     }
@@ -115,6 +143,10 @@
         {
           "lang": "en",
           "value": "max cardinality"
+        },
+        {
+          "lang": "sl",
+          "value": "največja kardinalnost/številčnost"
         }
       ]
     }
@@ -126,6 +158,10 @@
         {
           "lang": "en",
           "value": "datatype"
+        },
+        {
+          "lang": "sl",
+          "value": "podatkovni tip"
         }
       ]
     }
@@ -137,6 +173,10 @@
         {
           "lang": "en",
           "value": "config: embed"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: vdelaj"
         }
       ]
     }
@@ -148,6 +188,10 @@
         {
           "lang": "en",
           "value": "config: tree attribute id"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: identifikator drevesnega atributa"
         }
       ]
     }
@@ -159,6 +203,10 @@
         {
           "lang": "en",
           "value": "config: tree inverted"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: obrnjeno drevo"
         }
       ]
     }
@@ -170,6 +218,10 @@
         {
           "lang": "en",
           "value": "config: tree sort"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: razvrščanje drevesa"
         }
       ]
     }
@@ -181,6 +233,10 @@
         {
           "lang": "en",
           "value": "config: graph home default"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: privzeto izhodišče grafa"
         }
       ]
     }
@@ -192,6 +248,10 @@
         {
           "lang": "en",
           "value": "config: browsing root node"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: brskanje po korenskem vozlišču"
         }
       ]
     }
@@ -203,6 +263,10 @@
         {
           "lang": "en",
           "value": "config: hide from type view"
+        },
+        {
+          "lang": "sl",
+          "value": "konfiguracija: skrij iz pogleda tipa"
         }
       ]
     }
