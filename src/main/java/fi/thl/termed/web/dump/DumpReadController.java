@@ -115,29 +115,26 @@ public class DumpReadController {
       Writer w) throws IOException {
     JsonWriter jsonWriter = new JsonWriter(w);
 
-    w.write("{\n");
-    w.write("  \"graphs\":[\n");
+    jsonWriter.beginObject();
+    jsonWriter.name("graphs");
+    jsonWriter.beginArray();
     while (graphs.hasNext()) {
-      w.write("    ");
       gson.toJson(graphs.next(), Graph.class, jsonWriter);
-      w.write(graphs.hasNext() ? ",\n" : "\n");
     }
-    w.write("  ],\n");
-    w.write("  \"types\":[\n");
+    jsonWriter.endArray();
+    jsonWriter.name("types");
+    jsonWriter.beginArray();
     while (types.hasNext()) {
-      w.write("    ");
       gson.toJson(types.next(), Type.class, jsonWriter);
-      w.write(types.hasNext() ? ",\n" : "\n");
     }
-    w.write("  ],\n");
-    w.write("  \"nodes\":[\n");
+    jsonWriter.endArray();
+    jsonWriter.name("nodes");
+    jsonWriter.beginArray();
     while (nodes.hasNext()) {
-      w.write("    ");
       gson.toJson(nodes.next(), Node.class, jsonWriter);
-      w.write(nodes.hasNext() ? ",\n" : "\n");
     }
-    w.write("  ]\n");
-    w.write("}");
+    jsonWriter.endArray();
+    jsonWriter.endObject();
   }
 
 }

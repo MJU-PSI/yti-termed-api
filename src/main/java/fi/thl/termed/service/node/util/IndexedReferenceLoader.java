@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -124,15 +126,11 @@ public class IndexedReferenceLoader implements BiFunction<Node, String, Immutabl
   }
 
   private void logMissingReferenceValue(NodeId nodeId, String attributeId, NodeId referrerId) {
-    log.warn(
-        "Index may be corrupted or outdated. Node {} is missing references.{}.{} from the index.",
-        nodeId, attributeId, referrerId);
+    log.warn("Index may be corrupted or outdated. Node {} is missing references.{}.{} from the index.", nodeId, StringUtils.normalizeSpace(attributeId), referrerId);
   }
 
   private void logUnexpectedReferenceValue(NodeId nodeId, String attributeId, NodeId referenceId) {
-    log.warn(
-        "Index may be corrupted or outdated. Node {} has unexpected references.{}.{} in the index.",
-        nodeId, attributeId, referenceId);
+    log.warn("Index may be corrupted or outdated. Node {} has unexpected references.{}.{} in the index.", nodeId, StringUtils.normalizeSpace(attributeId), referenceId);
   }
 
 }
