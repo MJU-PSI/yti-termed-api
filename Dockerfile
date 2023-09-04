@@ -14,6 +14,10 @@ RUN mvn clean package -DskipTests
 # Pull base image
 FROM yti-docker-java11-base:alpine
 
+ENV TZ=Europe/Ljubljana
+
+RUN apk add --no-cache tzdata
+
 # Copy from builder 
 COPY --from=builder /app/target/termed-api-exec.jar ${deploy_dir}/termed-api-exec.jar
 
